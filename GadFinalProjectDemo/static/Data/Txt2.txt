@@ -1,0 +1,2 @@
+<h1> This is a new text for Wednesday class </h1> <br>
+<h2> And I want to know if it mopved into a new line </h2>

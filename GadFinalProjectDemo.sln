@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "GadFinalProjectDemo", "GadFinalProjectDemo.pyproj", "{BAD48A12-5F62-4DB9-87AB-DDA514DE009B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAD48A12-5F62-4DB9-87AB-DDA514DE009B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD48A12-5F62-4DB9-87AB-DDA514DE009B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD48A12-5F62-4DB9-87AB-DDA514DE009B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD48A12-5F62-4DB9-87AB-DDA514DE009B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2B4BAF7-0616-4086-A2D3-A723F6495765}
+	EndGlobalSection
+EndGlobal
