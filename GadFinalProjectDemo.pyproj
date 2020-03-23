@@ -30,6 +30,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GadFinalProjectDemo\Models\LocalDatabaseRoutines.py" />
     <Compile Include="GadFinalProjectDemo\Models\QueryFormStructure.py">
       <SubType>Code</SubType>
     </Compile>
@@ -50,9 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GadFinalProjectDemo\static\Data\capitals.csv" />
+    <Content Include="GadFinalProjectDemo\static\Data\Txt1.txt" />
+    <Content Include="GadFinalProjectDemo\static\Data\Txt2.txt" />
+    <Content Include="GadFinalProjectDemo\static\Data\users.csv" />
     <Content Include="GadFinalProjectDemo\static\Pics\pic1.jpg" />
+    <Content Include="GadFinalProjectDemo\templates\Data.html" />
+    <Content Include="GadFinalProjectDemo\templates\DataModel.html" />
+    <Content Include="GadFinalProjectDemo\templates\DataSet1.html" />
+    <Content Include="GadFinalProjectDemo\templates\login.html" />
     <Content Include="GadFinalProjectDemo\templates\PictureAlbum.html" />
     <Content Include="GadFinalProjectDemo\templates\query.html" />
+    <Content Include="GadFinalProjectDemo\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="GadFinalProjectDemo\static\content\bootstrap.css" />
     <Content Include="GadFinalProjectDemo\static\content\bootstrap.min.css" />
