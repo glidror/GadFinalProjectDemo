@@ -57,6 +57,7 @@
     <Content Include="GadFinalProjectDemo\static\Data\bush.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\capitals.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\clinton.csv" />
+    <Content Include="GadFinalProjectDemo\static\Data\nuforc_events.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\obama.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\status.txt" />
     <Content Include="GadFinalProjectDemo\static\Data\time_series_2019-ncov-Confirmed.csv" />

@@ -1,12 +1,15 @@
-import base64
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
+import base64
 import datetime
-from os import path
 import io
+from os import path
 
 
 def plot_case_1(df , start_date , end_date , kind):
