@@ -1,33 +1,57 @@
-{% extends "layout.html" %}
+﻿{% extends "layout.html" %}
 
 {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<div class="jumbotron" style="background-image: url('/static/Pics/aliensky.jpg');">
+
+    
+    <div class="d-flex flex-row-reverse bg-secondary">
+        <h1 class="heb" dir="rtl">עצמים לא מזוהים</h1>
+        <div class="heb" dir="rtl">
+            <p class="lead">הפנטגון האמריקאי הודה בקיומה של היוזמה הממשלתית החשאית "תכנית מתקדמת לזיהוי איום אווירי", שבין היתר בוחנת גם תצפיות ודיווחים על עב"מים. אנשי ביטחון לשעבר נותרו המומים: "אנחנו לא מאמינים שהם סוף סוף חשפו את זה"</p>
+            <p><a href="https://youtu.be/HkdAxWy7Fdk" class="btn btn-primary btn-large">five Amazing facts about UFO's &raquo;</a></p>
+        </div>
+    </div>
 </div>
 
-<div class="row">
+
+
+<div class="row" >
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+        <h2 class="heb" dir="rtl">מפגשים מהסוג השלישי</h2>
+        <div class="container">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="300" height="260" src="https://www.youtube.com/embed/bDSFfphswpY" allowfullscreen></iframe>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-4" >
+        <h2 class="heb" dir="rtl">נושא העבודה, תחום המחקר</h2>
+        <p class="heb" dir="rtl">
+            עצמים בלתי מזוהים תמיד סכרנו את בני האדם. יותר ויותר עדויות מתאספות ומסתבר שהנושא נחקר גם על ידי רשויות השלטון בארצות הברית.
+            <br /><br />
+            סרטים רבים הופקו. מ"מפגשים מהסוג השלישי", דרך "אי טי חבר מכוכב אחר" ועד סרטים עדכניים יות שמתארים מפגשים שונים ע עם חוצנים
+            <br /><br />
+            תקופה ארוכה הופיעו החוצנים כמפלצות ירוקות וברוב המקרים חרשו רעה נגד הגזע האנושי  <br /><br />
+            בעבודה הזו אני מביא בסיס נתונים של מעל 100 אלף עדויות רשומות ומאפשר חיפוש ל תבניות / איזורים / זמנים שבהם היה ריכוז עדויות. ריכוז עדויות במקום ובזמן מסויים, בעלות קווי מתאר דומים, יכולולת לרמוז שאכן היה "משהו" שם באותו זמן!
         </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
+        <p align="center"><a class="btn btn-default" href="https://he.wikipedia.org/wiki/%D7%A2%D7%A6%D7%9D_%D7%91%D7%9C%D7%AA%D7%99_%D7%9E%D7%96%D7%95%D7%94%D7%94">            
+            <img class="contain" align="center" src="/static/Pics/I-am-not-saying.jpg" alt='Missing' width ="100" height="100">
+        </a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
+
+     <div class="col-md-4">
+        <h2 class="heb" dir="rtl">אי תי  חבר מכוכב אחר</h2>
+        <div class="container">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/f6sR9R3k_kA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
+
 </div>
 
 {% endblock %}

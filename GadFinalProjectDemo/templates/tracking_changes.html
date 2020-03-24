@@ -1,0 +1,71 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<div class="row my-grid-borders">
+    <h3> The code for the site is on GitHub at: <a href="https://github.com/Oran-Uzrad/MyFinalProject.git" class="fa fa-github"></a></h3>
+</div>
+
+<div class="row my-grid-borders">
+    <h2>Changes:</h2>
+</div>
+<div class="row my-grid-borders">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>02/26/20</td>
+                <td>First update of the the site</td>
+            </tr>
+            <tr>
+                <td>02/27/20</td>
+                <td>Added a turorial for how to upload the project to pythonanywhere in the Project-Resorces page</td>
+            </tr>
+            <tr>
+                <td>02/27/20</td>
+                <td>Added 3 prject resources. 5120, 5220, and project definotion document</td>
+            </tr>
+            <tr>
+                <td>02/28/20</td>
+                <td>Added a link to 5130 and some styling</td>
+            </tr>
+            <tr>
+                <td>02/29/20</td>
+                <td>Added 5130 page. Improved Home page. Obama/Bush/Clinton pages</td>
+            </tr>
+            <tr>
+                <td>02/29/20</td>
+                <td>Update About and Contact pagess</td>
+            </tr>
+            <tr>
+                <td>03/2/20</td>
+                <td>Updates מסמך אפיון and Links to the מסמך איפיון and Github repository in the About page</td>
+            </tr>
+            <tr>
+                <td>03/16/20</td>
+                <td>Query and Final Project Status pages</td>
+            </tr>
+            <tr>
+                <td>03/20/20</td>
+                <td>Plot and Forms Demos</td>
+            </tr>
+            <tr>
+                <td>03/23/20</td>
+                <td>COVID-19 Page</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+    {% endblock %}

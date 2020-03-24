@@ -1,0 +1,60 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+    <div class="row my-grid-borders heb">
+        <h2 class="heb">הדגמת טפסים</h2>
+        <br />
+        <h3 class="heb"><a href="https://cetlo.webex.com/cetlo/lsr.php?RCID=014d9ba4b4b61d8b8f6db6594357a722" class="fa fa-play" target="_blank"></a>   קישור להקלטת שיעור המסביר על שימוש בטפסים</h3>
+        <br />
+        <p class="heb">התחילו לצפות מדקה 58. החלק הראשון הוא פרטני עם יונתן לוי וקצת אילי וורייט בסוף</p>
+        <br />
+
+    </div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            {{ form1.csrf_token }}
+            {{ wtf.form_field(form1.string_field_entry)}}
+            {{ wtf.form_field(form1.text_area_field_entry)}}
+            {{ wtf.form_field(form1.password_field_entry)}}
+            {{ wtf.form_field(form1.date_field_entry)}}
+            {{ wtf.form_field(form1.integer_field_entry)}}
+            {{ wtf.form_field(form1.decimal_field_entry)}}
+            {{ wtf.form_field(form1.boolean_field_entry)}}
+            {{ wtf.form_field(form1.radio_field_entry)}}
+            {{ wtf.form_field(form1.select_field_entry)}}
+            {{ wtf.form_field(form1.select_field_multiple_entry)}}
+            <input class="btn btn-primary" type="submit" value="submit">
+        </form>
+
+    </div>
+    <div class="col-md-6">
+
+        <h4> String: {{ s1 }}  --->    type:  {{ t1 }}</h4>
+        <h4> Text: {{ s2 }}   --->   type:  {{ t2 }} </h4>
+        <h4> Passwod: {{ s3 }} --->     type:  {{ t3 }} </h4>
+        <h4> Date: {{ s4 }} --->     type:  {{ t4 }} </h4>
+        <h4> Integer: {{ s5 }}  --->    type:  {{ t5 }} </h4>
+        <h4> Decimal: {{ s6 }} --->     type:  {{ t6 }} </h4>
+        <h4> Boolean: {{ s7 }} --->     type:  {{ t7 }} </h4>
+        <h4> Radio: {{ s8 }}  --->    type:  {{ t8 }} </h4>
+        <h4> Select: {{ s9 }} --->     type:  {{ t9 }} </h4>
+        <h4> Select Multiple: {{ s10 }} --->     type:  {{ t10 }} </h4>
+
+    </div>
+</div>
+
+    <div class="row">
+
+        
+
+    </div>
+
+
+
+    {% endblock %}
+

@@ -1,0 +1,47 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<h2 class="heb">רשימת דרישות ממשימה 5130</h2>
+
+
+<div class="row my-grid-borders heb">
+    <p>הטבלה כאן מפרטת צ'קליסט של דברים שצריכים להיכלל במשימה 5130 והפניות אליהם</p>
+</div>
+
+
+<div class="row my-grid-borders">
+    <table class="table table-striped heb">
+        <tbody>
+            <tr>
+                <td>מסמך איפיון</td>
+                <td><a class="btn btn-primary heb" href="https://drive.google.com/open?id=1VY1kC64RcFJGaFei-XUgMLrdy4CIS3PR" target="_blank">קרא עוד &raquo;</a></td>
+            </tr>
+            <tr>
+                <td>דפי דאטה</td>
+                <td><a class="btn btn-primary heb" href="{{ url_for('data') }}" target="_blank">קרא עוד &raquo;</a></td>
+            </tr>
+            <tr>
+                <td>דף ה Register</td>
+                <td>עדיין לא מוכן, צריך לעבוד על זה</a></td>
+            </tr>
+            <tr>
+                <td>דף בית מעודכן</td>
+                <td><a class="btn btn-primary heb" href="{{ url_for('home') }}" target="_blank">קרא עוד &raquo;</a></td>
+            </tr>
+            <tr>
+                <td>דף About</td>
+                <td><a class="btn btn-primary heb" href="{{ url_for('about') }}" target="_blank">קרא עוד &raquo;</a></td>
+            </tr>
+            <tr>
+                <td>דף Contact</td>
+                <td><a class="btn btn-primary heb" href="{{ url_for('contact') }}" target="_blank">קרא עוד &raquo;</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

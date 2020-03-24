@@ -1,10 +1,52 @@
-{% extends "layout.html" %}
+﻿{% extends "layout.html" %}
 
 {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
-
-<p>Use this area to provide additional information.</p>
+<div class="row" style="background-image: url('/static/Pics/aliensky2.jpg');" >
+  
+    <div class="col-md-11" style ="color:white">
+        <h2 class="heb" dir ="rtl" style ="color:white">פרויקט ניתוח נתונים הקשורים לביקור חוצנים בכדור הארץ. שכבה י' תיכונט. תש"פ</h2>
+        <br />
+        <h3 class="heb" dir="rtl">על הפרויקט</h3>
+        <p class="heb" dir="rtl">
+            הפרויקט הינו במסגרת מקצוע "מדעי הנתונים", של תלמידי שכבת י', תש"פ בתיכונט ע"ש אלתרמן בתל אביב.
+            <br /><br />
+            הפרויקט משלב שני תחומי ידע עיקריים:
+            <br /><br />
+            * תכנות בסביבת האינטרנט
+            <br />
+            * מדעי הנתונים
+            <br /><br />
+            במסגרת הפרויקט איתרתי מאגרי מידע ברשת ובכוונתי לבנות  סביבם אתר אינטרנט המאפשר גישה אל מאגרי המידע, ניתוח נתונים והצגתם בצורה נוחה למשתמשים. האתר יאפשר למשתמש לחקור את הנתונים בתחום הנבחר ולנסות להגיע לתובנות ומסקנות בעלות ערך.
+            <br /><br />
+            הפרויקט יתבסס על המרכיבים הטכנולוגיים הבאים:
+            <br /><br />
+            * שפת פייתון.
+            <br />
+            * ספריית Pandas.
+            <br />
+            * תשתית Flask לבניית שרת אינטרנט.
+        </p>
+        <br /><br /><br />
+    </div>
+    
+    <div class="col-md-11" style ="color:white" dir="rtl">
+        <div class="table" >
+            <table style="text-align:right;">
+                <tr>
+                    <td>מסמך איפיון שמתאים למשימה 5130</td>
+                    <td><a class="btn btn-primary heb" href="https://drive.google.com/open?id=1VY1kC64RcFJGaFei-XUgMLrdy4CIS3PR" target="_blank">Go &raquo;</a></td>
+                </tr>
+                <tr>
+                    <td>לינק לקוד ב GitHub</td>
+                    <td><a class="btn btn-primary heb" href="https://github.com/Oran-Uzrad/MyFinalProject.git" target="_blank">Go &raquo;</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

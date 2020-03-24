@@ -1,0 +1,72 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<div class="row my-grid-borders">
+    <p> Here I am going to put a general explanation about the Data</p>
+</div>
+<div class="row my-grid-borders">
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_trump }} alt='Missing'></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_obama }} alt='Missing'></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_bush }} alt='Missing'></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_clinton }} alt='Missing'></div>
+</div>
+<div class="row my-grid-borders">
+    <h2>Obama's Dataset Fields</h2>
+</div>
+<div class="row my-grid-borders">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Start Date</td>
+                <td class="heb">תאריך ההתחלה של דגימת הפופולריות של הנשיא</td>
+            </tr>
+            <tr>
+                <td>End Date</td>
+                <td>Add more text</td>
+            </tr>
+            <tr>
+                <td>Approbving</td>
+                <td>Add more text</td>
+            </tr>
+            <tr>
+                <td>Disapproving</td>
+                <td>Add more text</td>
+            </tr>
+            <tr>
+                <td>Unsure/NoData</td>
+                <td>Add more text</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row my-grid-borders">
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form1.csrf_token }}
+            <input class="btn btn-success" type="submit" name="action" value="Expand">
+        </form>
+    </div>
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form2.csrf_token }}
+            <input class="btn btn-danger" type="submit" name="action" value="Collapse">
+        </form>
+    </div>
+</div>
+<div class="row my-grid-borders">
+    {{ raw_data_table | safe}}
+</div>
+
+
+{% endblock %}

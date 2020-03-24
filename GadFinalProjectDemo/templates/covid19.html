@@ -1,0 +1,74 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <img class="contain" src={{ img_under_construction }} alt='Missing' height=150 width=150>
+        <br /><br /><br />
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-6">
+        <h2>COVID-19 Day Ratios Data</h2>
+        <h4>Ratios between number of cases on a certain date relative to the day before</h4>
+        <br />
+        <h4>Data source: <a href="https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases">HDX</a></h4>
+        <h4>Last update on this page: 3/23/20</h4>
+        <br /><br /><br />
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+<div class="row">
+
+    <div class="col-md-4">
+        <form method="post">
+            {{ form1.csrf_token }}
+            {{ wtf.form_field(form1.start_date)}}
+            {{ wtf.form_field(form1.end_date)}}
+            {{ wtf.form_field(form1.countries)}}
+            <input class="btn btn-primary" type="submit" value="submit">
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <h4>Confirmed</h4>
+            <img src={{ chart_confirmed }} class="img-thumbnail" alt="not found">
+        </div>
+        <div class="row">
+            <h4>Deaths</h4>
+            <img src={{ chart_deaths }} class="img-thumbnail" alt="not found">
+        </div>
+        <div class="row">
+            <h4>Recovered</h4>
+            <img src={{ chart_recovered }} class="img-thumbnail" alt="not found">
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+
+<hr />
+
+    {% endblock %}
