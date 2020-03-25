@@ -147,15 +147,15 @@ def DataModel():
 @app.route('/DataSet1')
 def DataSet1():
 
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\nuforc_events.csv'))
     raw_data_table = df.to_html(classes = 'table table-hover')
 
     return render_template(
         'DataSet1.html',
-        title='This is Data Set 1 page',
+        title='UFO testmonials, by place and date',
         raw_data_table = raw_data_table,
         year=datetime.now().year,
-        message='In this page we will display the datasets we are going to use in order to answer ARE THERE UFOs'
+        message='This page displays data that can be analyzed and help us understand - ARE THERE UFOs ??'
     )
 
 
