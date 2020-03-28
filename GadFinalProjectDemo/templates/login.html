@@ -2,20 +2,31 @@
 
 {% block content %}
 
+<style>
+    td, tr, table {
+        font-size: 22px
+    }
+
+    h2 {
+        position: relative;
+        left: 450px;
+    }
+</style>
+
+<div class="row" style="background-image: url('/static/Pics/alien4.jpg'); background-size:100% 100%; color:white" >
+
 <h2>{{ title }}</h2>
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-    {% for message in messages %}
-<h3>{{ message[1] }}</h3>
-<br />
-    {% endfor %}
-{% endif %}
-{% endwith %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for message in messages %}
+            <h4  style="color:red">{{ message[1] }}</h4>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
 
 <br />
-<br />
-<br />
+
 <form method=post>
     {{ form.csrf }}
     {{ form.csrf_token }}
@@ -57,5 +68,5 @@
         </tr>
     </table>
 </form>
-
+</div>
     {% endblock %}

@@ -67,6 +67,9 @@
     <Content Include="GadFinalProjectDemo\static\Data\Txt1.txt" />
     <Content Include="GadFinalProjectDemo\static\Data\Txt2.txt" />
     <Content Include="GadFinalProjectDemo\static\Data\users.csv" />
+    <Content Include="GadFinalProjectDemo\static\Pics\alien3.jpg" />
+    <Content Include="GadFinalProjectDemo\static\Pics\alien4.jpg" />
+    <Content Include="GadFinalProjectDemo\static\Pics\alien5.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\aliensky.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\aliensky2.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\american_flag.jpg" />
@@ -74,6 +77,7 @@
     <Content Include="GadFinalProjectDemo\static\Pics\clinton.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\code_ex_1.PNG" />
     <Content Include="GadFinalProjectDemo\static\Pics\covid19-world.png" />
+    <Content Include="GadFinalProjectDemo\static\Pics\EarthSky.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\I-am-not-saying.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\obama.jpg" />
     <Content Include="GadFinalProjectDemo\static\Pics\oran.jpg" />

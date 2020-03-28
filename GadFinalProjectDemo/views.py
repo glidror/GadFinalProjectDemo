@@ -71,9 +71,9 @@ def home():
 def contact():
     return render_template(
         'contact.html',
-        title='Contact',
+        title='Gad Lidror',
         year=datetime.now().year,
-        message='Gad Lidror - Teacher, Tichonet'
+        message='Teacher, Tichonet'
     )
 
 # About Page
