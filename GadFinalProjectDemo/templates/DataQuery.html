@@ -2,28 +2,99 @@
 
 {% block content %}
 
-<h2>{{title}}</h2>
+<style>
+    td, tr, table {
+        font-size: 22px
+    }
 
-<p>This page will enable the user to input a data field</p>
+    h2 {
+        position: relative;
+        left: 450px;
+    }
+</style>
 
-    <form method=post>
-        {{ form.csrf }}
-        <table>
-            <tr>
-                <td class="input text"> {{ form.name.label }} </td>
-                <td>                    {{ form.name }}       </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td class="input submit"> <input type="submit" value="Capital"> </td>
-            </tr>
+<div class="row" style="background-image: url('/static/Pics/alien5.jpg'); background-size:100% 100%; color:white" >
+
+<h2>{{ title }}</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for message in messages %}
+       <h4  style="color:red">{{ message[1] }}</h4>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<br />
+
+
+<form method=post>
+    {{ form.csrf }}
+    {{ form.csrf_token }}
+    <table>
+        <tr>
+            <td>
+                {{ form.countries.label }}
+            </td>
+            <td>
+                {{ form.countries }}
+            </td>
+            <td>
+                {% if form.countries.errors %}
+                <ul class="text-danger">{% for error in form.FirstName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.start_date.label }}
+            </td>
+            <td>
+                {{ form.start_date }}
+            </td>
+            <td>
+                {% if form.start_date.errors %}
+                <ul class="text-danger">{% for error in form.FirstName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.end_date.label }}
+            </td>
+            <td>
+                {{ form.end_date }}
+            </td>
+            <td>
+                {% if form.end_date.errors %}
+                <ul class="text-danger">{% for error in form.FirstName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                {{ form.kind.label }}
+            </td>
+            <td>
+                {{ form.kind }}
+            </td>
+            <td>
+                {% if form.kind.errors %}
+                <ul class="text-danger">{% for error in form.FirstName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="input submit"> <input type="submit" value="Capital"> </td>
+        </tr>
         </table>
     </form>
 
-    <p><h1>Capital is : <b>{{name}}</b></h1></p>
-
     <h3> Table is </h3>
     {{ raw_data_table | safe}}
+    </div>
 
 
     {% endblock %}

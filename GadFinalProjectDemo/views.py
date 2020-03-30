@@ -38,7 +38,7 @@ from os       import path
 # Integrate internal project models
 # ---------------------------------
 from GadFinalProjectDemo.Models.LocalDatabaseRoutines import create_LocalDatabaseServiceRoutines
-from GadFinalProjectDemo.Models.FormStructure import QueryFormStructure 
+from GadFinalProjectDemo.Models.FormStructure import DataQueryFormStructure 
 from GadFinalProjectDemo.Models.FormStructure import LoginFormStructure 
 from GadFinalProjectDemo.Models.FormStructure import UserRegistrationFormStructure 
 from GadFinalProjectDemo.Models.FormStructure import ExpandForm
@@ -51,6 +51,7 @@ from GadFinalProjectDemo.Models.DataQuery     import plot_case_1
 from GadFinalProjectDemo.Models.DataQuery     import plot_to_img
 from GadFinalProjectDemo.Models.DataQuery     import covid19_day_ratio
 from GadFinalProjectDemo.Models.DataQuery     import get_countries_choices
+from GadFinalProjectDemo.Models.DataQuery     import Get_NormelizedUFOTestmonials
 #from GadFinalProjectDemo.Models.general_service_functions import htmlspecialchars
 
 #### Subclasses spawn
@@ -147,8 +148,8 @@ def DataModel():
 @app.route('/DataSet1')
 def DataSet1():
 
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\nuforc_events.csv'))
-    raw_data_table = df.to_html(classes = 'table table-hover')
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\UFOTestemonials.csv'))
+    raw_data_table = df.sample(30).to_html(classes = 'table table-hover')
 
     return render_template(
         'DataSet1.html',
@@ -159,34 +160,62 @@ def DataSet1():
     )
 
 
+@app.route('/DataSet2')
+def DataSet2():
+
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\weather_description.csv'))
+    raw_data_table = df.sample(30).to_html(classes = 'table table-hover')
+
+    return render_template(
+        'DataSet2.html',
+        title='Weather indications around the world',
+        raw_data_table = raw_data_table,
+        year=datetime.now().year,
+        message='This data set has a description of the weather around the world and enable me to check uf there is a connection between the UFOs apearence and the weather'
+    )
+
+@app.route('/DataSet3')
+def DataSet3():
+
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\USStatesCodes.csv'))
+    raw_data_table = df.sample(30).to_html(classes = 'table table-hover')
+
+    return render_template(
+        'DataSet3.html',
+        title='State names in the USA',
+        raw_data_table = raw_data_table,
+        year=datetime.now().year,
+        message='This data set enable me to replace short names of states to full names of states'
+    )
+
+
+
 @app.route('/DataQuery', methods=['GET', 'POST'])
 def DataQuery():
 
-    Name = None
-    Country = ''
-    capital = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))
-    df = df.set_index('Country')
+    
+    
+    df_ufo = Get_NormelizedUFOTestmonials()
 
-    raw_data_table = df.to_html(classes = 'table table-hover')
+    UFO_table = df_ufo.head(20).to_html(classes = 'table table-hover')
 
-    form = QueryFormStructure(request.form)
+    ##df = df.set_index('Country')
+
+    form = DataQueryFormStructure(request.form)
      
     if (request.method == 'POST' ):
-        name = form.name.data
-        Country = name
-        if (name in df.index):
-            capital = df.loc[name,'Capital']
-            raw_data_table = ""
-        else:
-            capital = name + ', no such country'
-        form.name.data = ''
+        #name = form.name.data
+        Country = ""
+        #if (name in df.index):
+        #    capital = df.loc[name,'Capital']
+        #    raw_data_table = ""
+        #else:
+        #    capital = name + ', no such country'
+        #form.name.data = ''
 
     return render_template('DataQuery.html', 
             form = form, 
-            name = capital, 
-            Country = Country,
-            raw_data_table = raw_data_table,
+            raw_data_table = UFO_table,
             title='User Data Query',
             year=datetime.now().year,
             message='Please enter the parameters you choose, to analyze the database'

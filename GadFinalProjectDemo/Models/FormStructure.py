@@ -26,8 +26,11 @@ from wtforms.fields.html5 import DateField
 ##   the 'name' field - will be used to get the country name
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
-class QueryFormStructure(FlaskForm):
-    name   = StringField('Country Name:  ' , validators = [DataRequired()])
+class DataQueryFormStructure(FlaskForm):
+    countries = SelectMultipleField('Select Multiple:' ,choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators = [DataRequired] )
+    start_date = DateField('Start Date (1/22/20 onwards):' , format='%Y-%m-%d' , validators = [DataRequired])
+    end_date = DateField('Start Date (Yesterday backwards):' , format='%Y-%m-%d' , validators = [DataRequired])
+    kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])
     submit = SubmitField('Submit')
 
 
@@ -42,9 +45,9 @@ class QueryFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class LoginFormStructure(FlaskForm):
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
-    submit = SubmitField('Submit')
+    username = StringField('User name:  ' , validators = [DataRequired()])
+    password = PasswordField('Pass word:  ' , validators = [DataRequired()])
+    submit   = SubmitField('Submit')
 
 
 
