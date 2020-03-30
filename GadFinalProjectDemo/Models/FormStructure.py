@@ -2,6 +2,14 @@
 ### ----------------------------------------------------------- ###
 ### --- include all software packages and libraries needed ---- ###
 ### ----------------------------------------------------------- ###
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import io
+from os import path
+
+
+
 from datetime import datetime
 
 from flask_wtf import FlaskForm
@@ -27,7 +35,11 @@ from wtforms.fields.html5 import DateField
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class DataQueryFormStructure(FlaskForm):
-    countries = SelectMultipleField('Select Multiple:' ,choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators = [DataRequired] )
+    df_short_state = pd.read_csv(path.join(path.dirname(__file__), "..\\static\\data\\USStatesCodes.csv"))
+    s = df_short_state.set_index('Code')['State']
+
+    countries = SelectMultipleField('Select Multiple:' ,choices=s)
+    #countries = SelectMultipleField('Select Multiple:' ,choices=[('NY', 'New York'), ('CA', 'California'), ('WA', 'Washington')], validators = [DataRequired] )
     start_date = DateField('Start Date (1/22/20 onwards):' , format='%Y-%m-%d' , validators = [DataRequired])
     end_date = DateField('Start Date (Yesterday backwards):' , format='%Y-%m-%d' , validators = [DataRequired])
     kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])

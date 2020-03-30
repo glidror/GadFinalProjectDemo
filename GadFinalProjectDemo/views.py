@@ -192,12 +192,10 @@ def DataSet3():
 
 @app.route('/DataQuery', methods=['GET', 'POST'])
 def DataQuery():
+    #df_ufo = Get_NormelizedUFOTestmonials()
+    #UFO_table = df_ufo.head(20).to_html(classes = 'table table-hover')
 
-    
-    
-    df_ufo = Get_NormelizedUFOTestmonials()
-
-    UFO_table = df_ufo.head(20).to_html(classes = 'table table-hover')
+    UFO_table = ""
 
     ##df = df.set_index('Country')
 
