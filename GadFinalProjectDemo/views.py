@@ -52,10 +52,12 @@ from GadFinalProjectDemo.Models.DataQuery     import plot_to_img
 from GadFinalProjectDemo.Models.DataQuery     import covid19_day_ratio
 from GadFinalProjectDemo.Models.DataQuery     import get_countries_choices
 from GadFinalProjectDemo.Models.DataQuery     import Get_NormelizedUFOTestmonials
+from GadFinalProjectDemo.Models.DataQuery     import get_states_choices
 #from GadFinalProjectDemo.Models.general_service_functions import htmlspecialchars
 
 #### Subclasses spawn
 db_Functions = create_LocalDatabaseServiceRoutines() 
+
 
 # Landing page - Home page
 @app.route('/')
@@ -200,6 +202,11 @@ def DataQuery():
     ##df = df.set_index('Country')
 
     form = DataQueryFormStructure(request.form)
+    country_choices = get_states_choices()
+    form.countries.choices = country_choices       # Taken from: https://stackoverflow.com/questions/46921823/dynamic-choices-wtforms-flask-selectfield
+
+
+
      
     if (request.method == 'POST' ):
         #name = form.name.data
