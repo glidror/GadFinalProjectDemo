@@ -77,7 +77,7 @@ def Get_NormelizedWeatherDataset():
 
 def Get_NormelizedUFOTestmonials():
     df = pd.read_csv(path.join(path.dirname(__file__), "..\\static\\data\\UFOTestemonials.csv"))
-    df1 = df.drop(['Event_URL' , 'Day' , 'Month', 'Year', 'Event_URL'], 1)
+    df1 = df.drop(['Event_URL' , 'Event_Date', 'Day' , 'Month', 'Year', 'Hour', 'Minute', 'Summary', 'Event_URL'], 1)
     df2 = Convert_StateCode_ToFullName(df1)
     df3 = df2.dropna()
     df3['Event_Time'] = pd.to_datetime(pd.Series(df3['Event_Time']), format='%Y-%m-%dT%H:%M:%SZ', errors = 'coerce')

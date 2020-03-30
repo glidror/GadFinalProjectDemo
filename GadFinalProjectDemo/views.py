@@ -53,7 +53,6 @@ from GadFinalProjectDemo.Models.DataQuery     import covid19_day_ratio
 from GadFinalProjectDemo.Models.DataQuery     import get_countries_choices
 from GadFinalProjectDemo.Models.DataQuery     import Get_NormelizedUFOTestmonials
 from GadFinalProjectDemo.Models.DataQuery     import get_states_choices
-#from GadFinalProjectDemo.Models.general_service_functions import htmlspecialchars
 
 #### Subclasses spawn
 db_Functions = create_LocalDatabaseServiceRoutines() 
@@ -194,23 +193,38 @@ def DataSet3():
 
 @app.route('/DataQuery', methods=['GET', 'POST'])
 def DataQuery():
-    #df_ufo = Get_NormelizedUFOTestmonials()
-    #UFO_table = df_ufo.head(20).to_html(classes = 'table table-hover')
+
+    df_ufo = Get_NormelizedUFOTestmonials()
 
     UFO_table = ""
+    #to_datetime(df1.index)
+    #pd.to_datetime(df['STARTDATE'],format='%d %b %Y %H:%M:%S:%f')
 
     ##df = df.set_index('Country')
 
     form = DataQueryFormStructure(request.form)
-    country_choices = get_states_choices()
-    form.countries.choices = country_choices       # Taken from: https://stackoverflow.com/questions/46921823/dynamic-choices-wtforms-flask-selectfield
-
-
+    
+    minmax = df_ufo['Event_Time']
+    form.start_date.data = minmax.min()
+    form.end_date.data = minmax.max()
+    form.states.choices = get_states_choices() 
 
      
     if (request.method == 'POST' ):
-        #name = form.name.data
-        Country = ""
+        ##df_ufo = Get_NormelizedUFOTestmonials()
+        df_ufo = df_ufo.set_index('State')
+
+        states = form.states.data
+        start_date = form.start_date.data
+        end_date = form.end_date.data
+        kind = form.kind.data
+
+        #df_ufo = df_ufo.groupby('State').sum()
+
+        df_ufo_states = df_ufo.loc[ states ]
+        UFO_table = df_ufo_states.head(20).to_html(classes = 'table table-hover')
+
+        
         #if (name in df.index):
         #    capital = df.loc[name,'Capital']
         #    raw_data_table = ""
