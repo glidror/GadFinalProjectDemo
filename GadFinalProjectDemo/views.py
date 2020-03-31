@@ -197,11 +197,7 @@ def DataQuery():
     df_ufo = Get_NormelizedUFOTestmonials()
 
     UFO_table = ""
-    #to_datetime(df1.index)
-    #pd.to_datetime(df['STARTDATE'],format='%d %b %Y %H:%M:%S:%f')
-
-    ##df = df.set_index('Country')
-
+    
     form = DataQueryFormStructure(request.form)
     
     minmax = df_ufo['Event_Time']
@@ -222,6 +218,7 @@ def DataQuery():
         #df_ufo = df_ufo.groupby('State').sum()
 
         df_ufo_states = df_ufo.loc[ states ]
+        #df_ufo_dates = df_ufo_states.loc[]
         UFO_table = df_ufo_states.head(20).to_html(classes = 'table table-hover')
 
         
