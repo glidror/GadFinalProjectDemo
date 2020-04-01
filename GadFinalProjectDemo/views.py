@@ -47,12 +47,13 @@ from GadFinalProjectDemo.Models.FormStructure import SinglePresidentForm
 from GadFinalProjectDemo.Models.FormStructure import AllOfTheAboveForm
 from GadFinalProjectDemo.Models.FormStructure import Covid19DayRatio
 
-from GadFinalProjectDemo.Models.DataQuery     import plot_case_1
 from GadFinalProjectDemo.Models.DataQuery     import plot_to_img
-from GadFinalProjectDemo.Models.DataQuery     import covid19_day_ratio
-from GadFinalProjectDemo.Models.DataQuery     import get_countries_choices
 from GadFinalProjectDemo.Models.DataQuery     import Get_NormelizedUFOTestmonials
 from GadFinalProjectDemo.Models.DataQuery     import get_states_choices
+from GadFinalProjectDemo.Models.DataQuery     import Get_NormelizedWeatherDataset
+from GadFinalProjectDemo.Models.DataQuery     import MergeUFO_and_Weather_datasets
+from GadFinalProjectDemo.Models.DataQuery     import MakeDF_ReadyFor_Analysis
+
 
 #### Subclasses spawn
 db_Functions = create_LocalDatabaseServiceRoutines() 
@@ -200,9 +201,12 @@ def DataQuery():
     
     form = DataQueryFormStructure(request.form)
     
+    #set default values of datetime, to indicate ALL the rows
     minmax = df_ufo['Event_Time']
     form.start_date.data = minmax.min()
-    form.end_date.data = minmax.max()
+    form.end_date.data   = minmax.max()
+
+    #Set the list of states from the data set of all US states
     form.states.choices = get_states_choices() 
 
      
@@ -210,24 +214,32 @@ def DataQuery():
         ##df_ufo = Get_NormelizedUFOTestmonials()
         df_ufo = df_ufo.set_index('State')
 
+        # Get the user's parameters for the query
         states = form.states.data
         start_date = form.start_date.data
         end_date = form.end_date.data
         kind = form.kind.data
 
-        #df_ufo = df_ufo.groupby('State').sum()
+        # Get the weather data set
+        dff = Get_NormelizedWeatherDataset()
 
-        df_ufo_states = df_ufo.loc[ states ]
-        #df_ufo_dates = df_ufo_states.loc[]
-        UFO_table = df_ufo_states.head(20).to_html(classes = 'table table-hover')
+        # Merge the UFO and Weather data sets into onem dataframe
+        df_merged = MergeUFO_and_Weather_datasets(dff, df_ufo)
 
-        
-        #if (name in df.index):
-        #    capital = df.loc[name,'Capital']
-        #    raw_data_table = ""
-        #else:
-        #    capital = name + ', no such country'
-        #form.name.data = ''
+        # no need of this field for the analysis and display
+
+        # Make the merged dataframe ready for anallysis
+        df_Merged_analysis = MakeDF_ReadyFor_Analysis(df_merged)
+        #df_Merged_analysis = df_Merged_analysis.dropna()
+
+
+        df_ufo_states = df_Merged_analysis.set_index('State').loc[ states ]
+
+
+        ##df_ufo_dates = df_ufo_states.loc[lambda df: (df['Event_Time'] >= start_date) & (df['Event_Time'] <= end_date))]
+
+        df_display = df_ufo_states.drop(['Event_Time'], 1)
+        UFO_table = df_display.sample(20).to_html(classes = 'table table-hover')
 
     return render_template('DataQuery.html', 
             form = form, 
