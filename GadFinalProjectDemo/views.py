@@ -232,11 +232,9 @@ def DataQuery():
         df_Merged_analysis = MakeDF_ReadyFor_Analysis(df_merged)
         #df_Merged_analysis = df_Merged_analysis.dropna()
 
-
         df_ufo_states = df_Merged_analysis.set_index('State').loc[ states ]
 
-
-        ##df_ufo_dates = df_ufo_states.loc[lambda df: (df['Event_Time'] >= start_date) & (df['Event_Time'] <= end_date))]
+        df_ufo_dates = df_ufo_states.loc[lambda df: (df['Event_Time'] >= start_date) & (df['Event_Time'] <= end_date)]
 
         df_display = df_ufo_states.drop(['Event_Time'], 1)
         UFO_table = df_display.sample(20).to_html(classes = 'table table-hover')

@@ -47,10 +47,10 @@ def Get_NormelizedWeatherDataset():
 
 # This Function set three new columns tha indicate if the weather description was Cloudy, Misty or Clear
 def MakeDF_ReadyFor_Analysis(dfm):
-    dfm['Weather'] = dfm['Weather'].str.upper()
+    dfm['Weather'] =   dfm['Weather'].str.upper()
     dfm['cloud']   = ((dfm['Weather'].str.find('CLOUD')>=0) | (dfm['Weather'].str.find('DRIZZLE')>=0) | (dfm['Weather'].str.find('RAIN')>=0)| (dfm['Weather'].str.find('THUNDERSTORM')>=0) | (dfm['Weather'].str.find('SNOW')>=0))
-    dfm['mist']    = ((dfm['Weather'].str.find('MIST')>=0) | (dfm['Weather'].str.find('FOG')>=0) | (dfm['Weather'].str.find('HAZE')>=0))
-    dfm['clear']   = ((dfm['Weather'].str.find('CLEAR')>=0)  | (dfm['Weather'].str.find('FEW CLOUDS')>=0)  | (dfm['Weather'].str.find('SCATTERED CLOUDS')>=0))
+    dfm['mist']    = ((dfm['Weather'].str.find('MIST')>=0)  | (dfm['Weather'].str.find('FOG')>=0)     | (dfm['Weather'].str.find('HAZE')>=0))
+    dfm['clear']   = ((dfm['Weather'].str.find('CLEAR')>=0) | (dfm['Weather'].str.find('FEW CLOUDS')>=0)  | (dfm['Weather'].str.find('SCATTERED CLOUDS')>=0))
     return dfm
 
 def MergeUFO_and_Weather_datasets(dff, df3):
