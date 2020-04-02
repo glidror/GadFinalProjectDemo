@@ -198,7 +198,8 @@ def DataQuery():
     df_ufo = Get_NormelizedUFOTestmonials()
 
     UFO_table = ""
-    
+    fig_image = ""
+
     form = DataQueryFormStructure(request.form)
     
     #set default values of datetime, to indicate ALL the rows
@@ -208,9 +209,11 @@ def DataQuery():
 
     #Set the list of states from the data set of all US states
     form.states.choices = get_states_choices() 
+   
 
      
     if (request.method == 'POST' ):
+
         ##df_ufo = Get_NormelizedUFOTestmonials()
         df_ufo = df_ufo.set_index('State')
 
@@ -232,16 +235,32 @@ def DataQuery():
         df_Merged_analysis = MakeDF_ReadyFor_Analysis(df_merged)
         #df_Merged_analysis = df_Merged_analysis.dropna()
 
+        # Filter only the requested States
         df_ufo_states = df_Merged_analysis.set_index('State').loc[ states ]
-
+        # Filter only the requested Dates
         df_ufo_dates = df_ufo_states.loc[lambda df: (df['Event_Time'] >= start_date) & (df['Event_Time'] <= end_date)]
 
+        # This field was used to set the dates frame requested. The datetime field will show the date
         df_display = df_ufo_states.drop(['Event_Time'], 1)
-        UFO_table = df_display.sample(20).to_html(classes = 'table table-hover')
+        UFO_table = df_display.sample(20).to_html()
+
+        # create plot object ready for graphs
+        ##fig, ax = plt.subplots()
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+
+        #if (kind=='bar'):
+        df_graph = df_display.groupby('State').count()
+        df_graph = df_graph.nlargest(6, 'datetime') 
+        df_graph['datetime'].plot(ax = ax, kind='barh', grid=True, figsize=(12,6))
+        fig_image = plot_to_img(fig)
+     
+
 
     return render_template('DataQuery.html', 
             form = form, 
             raw_data_table = UFO_table,
+            fig_image = fig_image,
             title='User Data Query',
             year=datetime.now().year,
             message='Please enter the parameters you choose, to analyze the database'
