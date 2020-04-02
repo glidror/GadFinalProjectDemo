@@ -252,7 +252,8 @@ def DataQuery():
         #if (kind=='bar'):
         df_graph = df_display.groupby('State').count()
         df_graph = df_graph.nlargest(6, 'datetime') 
-        df_graph['datetime'].plot(ax = ax, kind='barh', grid=True, figsize=(12,6))
+        ##plt.figure (figsize=(12,6))
+        df_graph['datetime'].plot(ax = ax, kind='barh', grid=True, figsize=(6,3))
         fig_image = plot_to_img(fig)
      
 
