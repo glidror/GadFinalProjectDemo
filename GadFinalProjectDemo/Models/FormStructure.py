@@ -36,8 +36,8 @@ from wtforms.fields.html5 import DateField
 ##                         form be "posted" (sent to the server for process)
 class DataQueryFormStructure(FlaskForm):
     states = SelectMultipleField('Select Multiple:', validators = [DataRequired] )
-    start_date = DateField('Start Date (1/22/20 onwards):' , format='%Y-%m-%d' , validators = [DataRequired])
-    end_date = DateField('Start Date (Yesterday backwards):' , format='%Y-%m-%d' , validators = [DataRequired])
+    start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired])
+    end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired])
     kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])
     submit = SubmitField('Submit')
 

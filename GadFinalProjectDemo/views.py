@@ -203,10 +203,10 @@ def DataQuery():
     form = DataQueryFormStructure(request.form)
     
     #set default values of datetime, to indicate ALL the rows
+    form.start_date.data = df_ufo.Event_Time.min()
+    form.end_date.data = df_ufo.Event_Time.max()
     minmax = df_ufo['Event_Time']
-    form.start_date.data = minmax.min()
-    form.end_date.data   = minmax.max()
-
+  
     #Set the list of states from the data set of all US states
     form.states.choices = get_states_choices() 
    
@@ -240,21 +240,21 @@ def DataQuery():
         # Filter only the requested Dates
         df_ufo_dates = df_ufo_states.loc[lambda df: (df['Event_Time'] >= start_date) & (df['Event_Time'] <= end_date)]
 
-        # This field was used to set the dates frame requested. The datetime field will show the date
-        df_display = df_ufo_states.drop(['Event_Time'], 1)
-        UFO_table = df_display.sample(20).to_html()
-
         # create plot object ready for graphs
-        ##fig, ax = plt.subplots()
         fig = plt.figure()
-        ax = fig.add_subplot(111)
+        ax = fig.add_subplot()
 
         #if (kind=='bar'):
-        df_graph = df_display.groupby('State').count()
-        df_graph = df_graph.nlargest(6, 'datetime') 
-        ##plt.figure (figsize=(12,6))
-        df_graph['datetime'].plot(ax = ax, kind='barh', grid=True, figsize=(6,3))
+            # Prepare a graph of how many reports have been made, in comparison with other states
+        df_graph = df_ufo_states.groupby('State').count()
+        df_graph = df_graph.rename(columns={'datetime': 'Reports'})
+        df_graph = df_graph.drop(['Event_Time', 'Weather' , 'Shape', 'City' , 'Duration', 'cloud', 'mist', 'clear'], 1)
+        df_graph = df_graph.nlargest(10, 'Reports') 
+        UFO_table = df_graph.to_html()
+
+        df_graph['Reports'].plot(ax = ax, kind='barh', grid=True)
         fig_image = plot_to_img(fig)
+
      
 
 
