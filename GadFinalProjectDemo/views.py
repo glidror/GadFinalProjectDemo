@@ -22,12 +22,8 @@ from flask     import Flask, render_template, flash, redirect, request
 from flask_wtf import FlaskForm
 from wtforms   import Form, validators, ValidationError
 from wtforms   import BooleanField, StringField, PasswordField, TextField, TextAreaField, SelectField, DateField, SubmitField
-from wtforms.validators import DataRequired
-
-
+from wtforms.validators   import DataRequired
 from wtforms.fields.html5 import DateField , DateTimeField
-
-
 
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
@@ -43,9 +39,6 @@ from GadFinalProjectDemo.Models.FormStructure import LoginFormStructure
 from GadFinalProjectDemo.Models.FormStructure import UserRegistrationFormStructure 
 from GadFinalProjectDemo.Models.FormStructure import ExpandForm
 from GadFinalProjectDemo.Models.FormStructure import CollapseForm
-from GadFinalProjectDemo.Models.FormStructure import SinglePresidentForm
-from GadFinalProjectDemo.Models.FormStructure import AllOfTheAboveForm
-from GadFinalProjectDemo.Models.FormStructure import Covid19DayRatio
 
 from GadFinalProjectDemo.Models.DataQuery     import plot_to_img
 from GadFinalProjectDemo.Models.DataQuery     import Get_NormelizedUFOTestmonials
@@ -94,13 +87,15 @@ def about():
 
 # -------------------------------------------------------
 # Register new user page
+# This function will get user details, will check if the user already exists
+# and if not, it will save the details in the users data base
 # -------------------------------------------------------
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
     form = UserRegistrationFormStructure(request.form)
 
     if (request.method == 'POST' and form.validate()):
-        if (not db_Functions.IsUserExist(form.username.data)):
+        if (not db_Functions.IsUserExist(form.username.data)):   # Check is user already exist in the users database
             db_Functions.AddNewUser(form)
             flash('Welcom - '+ form.FirstName.data + " " + form.LastName.data )
         else:
@@ -233,7 +228,6 @@ def DataQuery():
 
         # Make the merged dataframe ready for anallysis
         df_Merged_analysis = MakeDF_ReadyFor_Analysis(df_merged)
-        #df_Merged_analysis = df_Merged_analysis.dropna()
 
         # Filter only the requested States
         df_ufo_states = df_Merged_analysis.set_index('State').loc[ states ]
@@ -250,13 +244,12 @@ def DataQuery():
         df_graph = df_graph.rename(columns={'datetime': 'Reports'})
         df_graph = df_graph.drop(['Event_Time', 'Weather' , 'Shape', 'City' , 'Duration', 'cloud', 'mist', 'clear'], 1)
         df_graph = df_graph.nlargest(10, 'Reports') 
-        UFO_table = df_graph.to_html()
+        UFO_table = df_graph.to_html()      # create a string in HTML of the dataframe as a HTML table
 
         df_graph['Reports'].plot(ax = ax, kind='barh', grid=True)
         fig_image = plot_to_img(fig)
 
-     
-
+    
 
     return render_template('DataQuery.html', 
             form = form, 

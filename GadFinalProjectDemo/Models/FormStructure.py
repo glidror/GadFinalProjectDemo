@@ -35,10 +35,14 @@ from wtforms.fields.html5 import DateField
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class DataQueryFormStructure(FlaskForm):
-    states = SelectMultipleField('Select Multiple:', validators = [DataRequired] )
-    start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired])
-    end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired])
-    kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])
+    states = SelectMultipleField('Select Multiple:' )
+    start_date = DateField('Start Date:' , format='%Y-%m-%d' )
+    end_date   = DateField('End   Date:' , format='%Y-%m-%d' )
+    kind = SelectField('Chart Kind' , choices=[('line', 'line'), ('bar', 'bar')])
+    #states = SelectMultipleField('Select Multiple:', validators = [DataRequired] )
+    #start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired])
+    #end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired])
+    #kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])
     submit = SubmitField('Submit')
 
 
@@ -80,29 +84,6 @@ class UserRegistrationFormStructure(FlaskForm):
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
-## This class have the fields that the user can set, to have the query parameters for analysing the data
-##   This form is where the user can set different parameters, depand on your project,
-##   that will be used to do the data analysis (using Pandas etc.)
-## You can see three fields:
-##   The fields that will be part of this form are specific to your project
-##   Please complete this class according to your needs
-##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
-## class DataParametersFormStructure(FlaskForm):
-class Covid19DayRatio(FlaskForm):
-    countries = SelectMultipleField('Select Multiple:' , validators = [DataRequired] )
-    start_date = DateField('Start Date (1/22/20 onwards):' , format='%Y-%m-%d' , validators = [DataRequired])
-    end_date = DateField('Start Date (Yesterday backwards):' , format='%Y-%m-%d' , validators = [DataRequired])
-    subnmit = SubmitField('submit')    
-
-class SinglePresidentForm(FlaskForm):
-    president = SelectField('President' , validators = [DataRequired] , choices=[('trump', 'Trump'), ('obama', 'Obama'), ('bush', 'Bush') , ('clinton', 'Clinton')])
-    start_date = DateField('Start Date' , format='%Y-%m-%d' , validators = [DataRequired])
-    end_date = DateField('End Date' , format='%Y-%m-%d' , validators = [DataRequired])
-    kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])
-    subnmit = SubmitField('הצג')
-
-
 
 ### ----------------------------------------------------------- ###
 ###      Action Buttons
@@ -118,22 +99,5 @@ class CollapseForm(FlaskForm):
     value="Collapse"
 ### ----------------------------------------------------------- ###
 
-
-
-### ----------------------------------------------------------- ###
-###     Demo for using differnt field types
-### ----------------------------------------------------------- ###
-class AllOfTheAboveForm(FlaskForm):
-    string_field_entry = StringField('Enter a String:' , validators = [DataRequired])
-    text_area_field_entry = TextAreaField('Enter Text:' , validators = [DataRequired])
-    password_field_entry = PasswordField('Enter Password:' , validators = [DataRequired])
-    date_field_entry = DateField('Enter Date:' , format='%Y-%m-%d' , validators = [DataRequired])
-    integer_field_entry = IntegerField('Enter an Integer:' , validators = [DataRequired])
-    decimal_field_entry = DecimalField('Enter a Decimal:' , validators = [DataRequired])
-    boolean_field_entry = BooleanField('Enter a Boolean:' , validators = [DataRequired])
-    radio_field_entry = RadioField('Choose one of:' , validators = [DataRequired] , choices=[('1', 'A'), ('2', 'B'), ('3', 'C') , ('4', 'D')])
-    select_field_entry = SelectField('Select:' , validators = [DataRequired] , choices=[('trump', 'Trump'), ('obama', 'Obama'), ('bush', 'Bush') , ('clinton', 'Clinton')])
-    select_field_multiple_entry = SelectMultipleField('Select Multiple:' , validators = [DataRequired] , choices=[('trump', 'Trump'), ('obama', 'Obama'), ('bush', 'Bush') , ('clinton', 'Clinton')])
-    subnmit = SubmitField('submit')
 
 
