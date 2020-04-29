@@ -119,7 +119,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            #return redirect('<were to go if login is good!')
+            return redirect('DataQuery')
         else:
             flash('Error in - Username and/or password')
    
@@ -216,7 +216,6 @@ def DataQuery():
         states = form.states.data
         start_date = form.start_date.data
         end_date = form.end_date.data
-        kind = form.kind.data
 
         # Get the weather data set
         dff = Get_NormelizedWeatherDataset()
@@ -238,8 +237,7 @@ def DataQuery():
         fig = plt.figure()
         ax = fig.add_subplot()
 
-        #if (kind=='bar'):
-            # Prepare a graph of how many reports have been made, in comparison with other states
+        # Prepare a graph of how many reports have been made, in comparison with other states
         df_graph = df_ufo_states.groupby('State').count()
         df_graph = df_graph.rename(columns={'datetime': 'Reports'})
         df_graph = df_graph.drop(['Event_Time', 'Weather' , 'Shape', 'City' , 'Duration', 'cloud', 'mist', 'clear'], 1)

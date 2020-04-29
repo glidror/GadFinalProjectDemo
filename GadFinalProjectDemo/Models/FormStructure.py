@@ -92,7 +92,6 @@ class DataQueryFormStructure(FlaskForm):
     states = SelectMultipleField('Select Multiple:', validators = [DataRequired()] )
     start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
     end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
-    kind = SelectField('Chart Kind' , validators = [DataRequired()] , choices=[('line', 'line'), ('bar', 'bar')])
     submit = SubmitField('Submit')
 
 
