@@ -18,32 +18,14 @@ from wtforms import TextField, TextAreaField, SelectField, SelectMultipleField, 
 from wtforms import StringField, PasswordField, HiddenField, SubmitField
 from wtforms import IntegerField, DecimalField, FloatField, RadioField, BooleanField
 
-from wtforms import validators, ValidationError
+from wtforms import validators
+from wtforms import ValidationError
 from wtforms.validators import DataRequired
 from wtforms.validators import InputRequired
 
 from wtforms.fields.html5 import DateField
 ### ----------------------------------------------------------- ###
 
-
-
-
-
-## This class have the fields that are part of the Country-Capital demonstration
-## You can see two fields:
-##   the 'name' field - will be used to get the country name
-##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
-class DataQueryFormStructure(FlaskForm):
-    states = SelectMultipleField('Select Multiple:' )
-    start_date = DateField('Start Date:' , format='%Y-%m-%d' )
-    end_date   = DateField('End   Date:' , format='%Y-%m-%d' )
-    kind = SelectField('Chart Kind' , choices=[('line', 'line'), ('bar', 'bar')])
-    #states = SelectMultipleField('Select Multiple:', validators = [DataRequired] )
-    #start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired])
-    #end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired])
-    #kind = SelectField('Chart Kind' , validators = [DataRequired] , choices=[('line', 'line'), ('bar', 'bar')])
-    submit = SubmitField('Submit')
 
 
 
@@ -99,5 +81,21 @@ class CollapseForm(FlaskForm):
     value="Collapse"
 ### ----------------------------------------------------------- ###
 
+
+## This class have the fields that are part of the Country-Capital demonstration
+## You can see two fields:
+##   the 'name' field - will be used to get the country name
+##   the 'submit' button - the button the user will press to have the 
+##                         form be "posted" (sent to the server for process)
+class DataQueryFormStructure(FlaskForm):
+    #states = SelectMultipleField('Select Multiple:' )
+    #start_date = DateField('Start Date:' , format='%Y-%m-%d' )
+    #end_date   = DateField('End   Date:' , format='%Y-%m-%d' )
+    #kind = SelectField('Chart Kind' , choices=[('line', 'line'), ('bar', 'bar')])
+    states = SelectMultipleField('Select Multiple:', validators = [DataRequired()] )
+    start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
+    end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
+    kind = SelectField('Chart Kind' , validators = [DataRequired()] , choices=[('line', 'line'), ('bar', 'bar')])
+    submit = SubmitField('Submit')
 
 
