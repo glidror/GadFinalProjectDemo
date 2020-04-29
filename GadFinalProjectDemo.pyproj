@@ -30,7 +30,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GadFinalProjectDemo\Trash\general_service_functions.py" />
     <Compile Include="GadFinalProjectDemo\Models\LocalDatabaseRoutines.py" />
     <Compile Include="GadFinalProjectDemo\Models\DataQuery.py" />
     <Compile Include="GadFinalProjectDemo\Models\FormStructure.py">
@@ -43,7 +42,6 @@
   <ItemGroup>
     <Folder Include="GadFinalProjectDemo\" />
     <Folder Include="GadFinalProjectDemo\Models\" />
-    <Folder Include="GadFinalProjectDemo\Trash\" />
     <Folder Include="GadFinalProjectDemo\static\" />
     <Folder Include="GadFinalProjectDemo\static\content\" />
     <Folder Include="GadFinalProjectDemo\static\fonts\" />
@@ -53,7 +51,6 @@
     <Folder Include="GadFinalProjectDemo\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GadFinalProjectDemo\static\Data\capitals.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\USStatesCodes.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\UFOTestemonials.csv" />
     <Content Include="GadFinalProjectDemo\static\Data\users.csv" />
