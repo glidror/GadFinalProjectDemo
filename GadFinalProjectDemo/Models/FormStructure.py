@@ -82,16 +82,13 @@ class CollapseForm(FlaskForm):
 ### ----------------------------------------------------------- ###
 
 
-## This class have the fields that are part of the Country-Capital demonstration
+## This class have the fields that are part of the data query of the project
 ## You can see two fields:
-##   the 'name' field - will be used to get the country name
-##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
+##   the 'states' field - enable to choose multiple states for the query
+##   the 'start_date' field - begin of date to start search of UFO testemonials
+##   the 'end_date' field - end of date to start search of UFO testemonials
+##   the 'kind' field - the type of graph that will be displayed
 class DataQueryFormStructure(FlaskForm):
-    #states = SelectMultipleField('Select Multiple:' )
-    #start_date = DateField('Start Date:' , format='%Y-%m-%d' )
-    #end_date   = DateField('End   Date:' , format='%Y-%m-%d' )
-    #kind = SelectField('Chart Kind' , choices=[('line', 'line'), ('bar', 'bar')])
     states = SelectMultipleField('Select Multiple:', validators = [DataRequired()] )
     start_date = DateField('Start Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
     end_date   = DateField('End   Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
