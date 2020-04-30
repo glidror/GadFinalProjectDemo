@@ -216,7 +216,6 @@ def DataQuery():
         states = form.states.data
         start_date = form.start_date.data
         end_date = form.end_date.data
-        kind = form.kind.data
 
         # Get the weather data set
         dff = Get_NormelizedWeatherDataset()
