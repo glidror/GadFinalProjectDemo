@@ -186,7 +186,9 @@ def DataSet3():
     )
 
 
-
+"""
+This function receive some parameters from the user and analyze them
+"""
 @app.route('/DataQuery', methods=['GET', 'POST'])
 def DataQuery():
 
@@ -198,7 +200,7 @@ def DataQuery():
     form = DataQueryFormStructure(request.form)
     
     #set default values of datetime, to indicate ALL the rows
-    form.start_date.data = df_ufo.Event_Time.min()
+    form.start_date.data = df_ufo.Event_Time.min() 
     form.end_date.data = df_ufo.Event_Time.max()
     minmax = df_ufo['Event_Time']
   
@@ -208,8 +210,6 @@ def DataQuery():
 
      
     if (request.method == 'POST' ):
-
-        ##df_ufo = Get_NormelizedUFOTestmonials()
         df_ufo = df_ufo.set_index('State')
 
         # Get the user's parameters for the query
@@ -220,7 +220,7 @@ def DataQuery():
         # Get the weather data set
         dff = Get_NormelizedWeatherDataset()
 
-        # Merge the UFO and Weather data sets into onem dataframe
+        # Merge the UFO and Weather data sets into one dataframe
         df_merged = MergeUFO_and_Weather_datasets(dff, df_ufo)
 
         # no need of this field for the analysis and display
@@ -237,9 +237,11 @@ def DataQuery():
         fig = plt.figure()
         ax = fig.add_subplot()
 
-        df_graph = df_ufo_states.groupby('State').count()
+        df_graph = df_ufo_states.groupby('State').count()   # How many reports for each state
         df_graph = df_graph.rename(columns={'datetime': 'Reports'})
+        # remove un interesting fields (columns)
         df_graph = df_graph.drop(['Event_Time', 'Weather' , 'Shape', 'City' , 'Duration', 'cloud', 'mist', 'clear'], 1)
+        # לוקח את עשרת הדיווחים הכי גדולים
         df_graph = df_graph.nlargest(10, 'Reports') 
         UFO_table = df_graph.to_html()      # create a string in HTML of the dataframe as a HTML table
 

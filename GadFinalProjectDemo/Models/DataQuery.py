@@ -76,10 +76,7 @@ def Convert_StateCode_ToFullName(df):
 
 def get_states_choices():
     df_short_state = pd.read_csv(path.join(path.dirname(__file__), "..\\static\\data\\USStatesCodes.csv"))
-    s = df_short_state.set_index('Code')['State']
     df1 = df_short_state.groupby('State').sum()
-    #df_short_state = df_short_state.set_index('Code')
-    #df_short_state = df_short_state.sort_index()
     l = df1.index
     m = list(zip(l , l))
     return m
